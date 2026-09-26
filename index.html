@@ -8,26 +8,105 @@
   <meta name="apple-mobile-web-app-title" content="A Força do Querer">
   <link rel="apple-touch-icon" href="icon-180.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <title>A Força do Querer · Capítulo 143</title>
+  <title>A Força do Querer · Capítulos 143–172</title>
   <style>
     :root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     * { box-sizing: border-box; }
-    body { min-height: 100dvh; margin: 0; background: #15151b; color: #fff; display: grid; place-items: center; }
-    main { width: min(100%, 520px); padding: 30px 22px; text-align: center; }
-    .icon { display: grid; place-items: center; width: 82px; height: 82px; margin: 0 auto 22px; background: #d74f6a; border-radius: 20px; font-size: 35px; }
-    h1 { font-size: clamp(25px, 6vw, 33px); line-height: 1.13; margin: 0 0 15px; }
-    p { color: #d2d2dc; font-size: 18px; line-height: 1.5; margin: 0 0 22px; }
-    a { display: block; width: 100%; padding: 17px 20px; border-radius: 14px; background: #d74f6a; color: white; text-decoration: none; font-size: 19px; font-weight: 700; }
-    small { display: block; color: #aaaab8; font-size: 14px; line-height: 1.4; margin-top: 17px; }
+    body { margin: 0; background: #15151b; color: #fff; }
+    header { padding: 18px 18px 10px; text-align: center; }
+    h1 { font-size: clamp(23px, 5vw, 30px); margin: 0 0 5px; }
+    .subtitle { margin: 0; color: #b8b8c5; font-size: 15px; }
+    main { max-width: 900px; margin: auto; padding: 0 12px 28px; }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    button, select { min-height: 54px; border-radius: 12px; border: 1px solid #545462; font: 600 17px system-ui, sans-serif; }
+    button { background: #30303b; color: #fff; padding: 8px; }
+    button:disabled { opacity: .35; }
+    select { grid-column: 1 / -1; width: 100%; background: #fff; color: #15151b; text-align: center; padding: 8px; }
+    .frame { width: 100%; aspect-ratio: 16 / 9; min-height: 210px; background: #000; border-radius: 14px; overflow: hidden; }
+    iframe { border: 0; width: 100%; height: 100%; display: block; }
+    .hint { color: #c9c9d2; text-align: center; font-size: 16px; line-height: 1.4; margin: 15px 10px; }
+    .next { width: 100%; background: #d74f6a; border-color: #d74f6a; font-size: 19px; }
+    .footer { text-align: center; color: #9999aa; font-size: 13px; margin-top: 18px; }
   </style>
 </head>
 <body>
-  <main>
-    <div class="icon" aria-hidden="true">▶</div>
+  <header>
     <h1>A Força do Querer</h1>
-    <p>O leitor que usávamos está a mostrar anúncios e a falhar. Retirei-o desta página.</p>
-    <a href="https://globoplay.globo.com/v/6154260/">Abrir capítulo 143 no Globoplay</a>
-    <small>A visualização dos capítulos completos pode exigir uma assinatura do Globoplay.</small>
+    <p class="subtitle">Capítulos 143 a 172</p>
+  </header>
+  <main>
+    <div class="controls">
+      <select id="episode" aria-label="Escolher capítulo"></select>
+      <button id="previous" type="button">← Anterior</button>
+      <button id="next" type="button">Seguinte →</button>
+    </div>
+    <div class="frame">
+      <iframe id="player" title="Vídeo do capítulo" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
+    </div>
+    <p class="hint">Toca em <strong>Play</strong> no vídeo. Para ampliar, toca no botão de ecrã inteiro.</p>
+    <button class="next" id="nextLarge" type="button">Ver capítulo seguinte →</button>
+    <p class="footer">O último capítulo escolhido fica guardado neste aparelho.</p>
   </main>
+  <script>
+    const hashes = [
+      '8eec1a372e8a99076315db9ea4d24b2c',
+      '520bae6649b42ff5a3c8c58b7fcfc5a9',
+      '214cfbe603b7f9f9bc005d5f53f7a1d3',
+      '35d58f24d7a7701719c983a1ef1979b1',
+      '8eb51d0a68e9373df41f88e5b551d4a3',
+      '4bfbd52f4e8466dc12aaf30b7e057b66',
+      'f571b230f35658c8bd8c6348021e0b53',
+      '48dd34fa4a5fc8e0045aba1952e1818e',
+      '3a1f85dfef891b2a3685ccb35efa807e',
+      '8eab914c88e95773ea769310350ad7cb',
+      '30777b47a2424ff255c03b17a3d0fca7',
+      '93f71a7c7fd97d049591f6d976f1d028',
+      '9239be5f9dc4058ec647f14fd04b1290',
+      'deb91d78cfe64ef36d96460e01234147',
+      'b0a4fed42fc9723fc5ef166da6e25614',
+      '33abffcedac43a654ac7f501856bf700',
+      '64254db8396e404d9223914a0bd355d2',
+      '33d6548e48d4318ceb0e3916a79afc84',
+      '2da6a99a5ce7553b10fb03803d4994a9',
+      'aa5bc34d6bd5933dd73ae2251bff88e8',
+      '75800f73fa80f935216b8cfbedf77bfa',
+      '9ed6f34466ebc301e3f09c1dedb6cfb2',
+      '570197ce24c78651ca363a146213ba08',
+      'b6358755a5c0aa01034c9870f842a467',
+      '99f6a934a7cf277f2eaece8e3ce619b2',
+      'af8a224ded8ec0eadd5d93a746de9d97',
+      'e7fdeae58bfddf97dba9f1f67abf5921',
+      'a1a2c3fed88e9b3ba5bc3625c074a04e',
+      '35569d4c2d840bb30f2ee92838b6f177',
+      'f9e70773c750b0b4ef0b7b2a0b07fe67',
+    ];
+    const MIN = 143;
+    const MAX = 172;
+    const KEY = 'a-forca-do-querer-capitulo';
+    const episode = document.getElementById('episode');
+    const player = document.getElementById('player');
+    const previous = document.getElementById('previous');
+    const next = document.getElementById('next');
+    const nextLarge = document.getElementById('nextLarge');
+    for (let n = MIN; n <= MAX; n++) episode.add(new Option(`Capítulo ${n}`, String(n)));
+    const fromLink = Number(new URL(location.href).searchParams.get('capitulo'));
+    const fromStorage = Number(localStorage.getItem(KEY));
+    let current = [fromLink, fromStorage].find(n => n >= MIN && n <= MAX) || MIN;
+
+    function show(n) {
+      current = Math.max(MIN, Math.min(MAX, n));
+      episode.value = String(current);
+      previous.disabled = current === MIN;
+      next.disabled = nextLarge.disabled = current === MAX;
+      localStorage.setItem(KEY, String(current));
+      history.replaceState(null, '', `${location.pathname}?capitulo=${current}`);
+      player.src = `https://112234152.xyz/player/index.php?data=${hashes[current - MIN]}`;
+    }
+    episode.addEventListener('change', () => show(Number(episode.value)));
+    previous.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    nextLarge.addEventListener('click', () => show(current + 1));
+    show(current);
+  </script>
 </body>
 </html>
